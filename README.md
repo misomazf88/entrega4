@@ -1,6 +1,6 @@
-# Entrega 4
+# Entrega 5
 
-Repositorio con código base para la implementación de MS logistica haciendo uso de eventos.
+Repositorio con código base para la implementación de MS Ordenes, MS Inventario, MSlogistica haciendo uso de eventos y CQRS.
 
 ## Estructura del proyecto
 
