@@ -45,31 +45,12 @@ Desde el directorio principal ejecute el siguiente comando.
 docker run -p 5000:5000 alpesonline/flask
 ```
 
-## Sidecar/Adaptador
-### Instalar librerías
-
-En el mundo real es probable que ambos proyectos estén en repositorios separados, pero por motivos pedagógicos y de simpleza, 
-estamos dejando ambos proyectos en un mismo repositorio. Sin embargo, usted puede encontrar un archivo `sidecar-requirements.txt`, 
-el cual puede usar para instalar las dependencias de Python para el servidor y cliente gRPC.
-
-```bash
-pip install -r sidecar-requirements.txt
-```
-
-### Ejecutar Servidor
-
-Desde el directorio principal ejecute el siguiente comando.
-
-```bash
-python src/sidecar/main.py 
-```
-
 ## Microservicio: Integración Logistica
 
 Desde el directorio `src` ejecute el siguiente comando
 
 ```bash
-uvicorn integracion_gds.main:app --host localhost --port 8002 --reload
+uvicorn integracion_logistica.main:app --host localhost --port 8002 --reload
 ```
 
 ### Instrucciones oficiales

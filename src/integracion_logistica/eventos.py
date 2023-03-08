@@ -14,7 +14,7 @@ class ConfirmacionRevertida(Record):
     orden_id = String()
     fecha_actualizacion = Long()
 
-class EventoConfirmacionGDS(Record):
+class EventoConfirmacionLogistica(Record):
     id = String(default=str(uuid.uuid4()))
     time = Long()
     ingestion = Long(default=time_millis())

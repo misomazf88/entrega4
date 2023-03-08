@@ -8,7 +8,7 @@ import uvicorn
 from pydantic import BaseSettings
 from typing import Any
 
-from .eventos import EventoConfirmacionGDS, ConfirmacionRevertida, OrdenConfirmada
+from .eventos import EventoConfirmacionLogistica, ConfirmacionRevertida, OrdenConfirmada
 from .comandos import ComandoConfirmarOrden, ComandoRevertirConfirmacion, ConfirmarOrdenPayload, RevertirConfirmacionPayload
 from .consumidores import suscribirse_a_topico
 from .despachadores import Despachador
@@ -27,7 +27,7 @@ tasks = list()
 @app.on_event("startup")
 async def app_startup():
     global tasks
-    task1 = asyncio.ensure_future(suscribirse_a_topico("evento-logistica", "sub-logistica", EventoConfirmacionGDS))
+    task1 = asyncio.ensure_future(suscribirse_a_topico("evento-logistica", "sub-logistica", EventoConfirmacionLogistica))
     task2 = asyncio.ensure_future(suscribirse_a_topico("comando-confirmar-orden", "sub-com-logistica-confirmacion", ComandoConfirmarOrden))
     task3 = asyncio.ensure_future(suscribirse_a_topico("comando-revertir-confirmacion", "sub-com-logistica-revertir-confirmacion", ComandoRevertirConfirmacion))
     tasks.append(task1)
@@ -49,7 +49,7 @@ async def prueba_orden_confirmada() -> dict[str, str]:
         fecha_confirmacion = utils.time_millis()
     )
 
-    evento = EventoConfirmacionGDS(
+    evento = EventoConfirmacionLogistica(
         time=utils.time_millis(),
         ingestion=utils.time_millis(),
         datacontenttype=OrdenConfirmada.__name__,
@@ -68,7 +68,7 @@ async def prueba_confirmacion_revertida() -> dict[str, str]:
         fecha_actualizacion = utils.time_millis()
     )
 
-    evento = EventoConfirmacionGDS(
+    evento = EventoConfirmacionLogistica(
         time=utils.time_millis(),
         ingestion=utils.time_millis(),
         datacontenttype=ConfirmacionRevertida.__name__,

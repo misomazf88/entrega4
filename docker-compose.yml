@@ -153,12 +153,12 @@ services:
     ports:
       - "50051:50051"
       
-  # Servicio GDS
-  gds:
-    container_name: gds
-    hostname: gds
-    image: alpesonline/gds 
-    profiles: ["alpesonline", "gds"]
+  # Servicio Logistica
+  logistica:
+    container_name: logistica
+    hostname: logistica
+    image: alpesonline/logistica 
+    profiles: ["alpesonline", "logistica"]
     depends_on:
       - alpesonline
       - broker
